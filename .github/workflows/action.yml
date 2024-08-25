@@ -25,7 +25,7 @@ jobs:
 
       - name: Cluster 
         run: |
-          gcloud container clusters get-credentials blucore-infra-task --region us-central1 --project blucore
+          gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project blucore
 
       - name: Deploy K8s
         run: |
