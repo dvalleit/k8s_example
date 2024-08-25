@@ -1,4 +1,4 @@
-ename: Kubernetes deployment
+name: Kubernetes deployment
 
 on: 
   workflow_dispatch:
