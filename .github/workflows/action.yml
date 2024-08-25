@@ -40,6 +40,6 @@ jobs:
       - name: Deploy K8s
         run: |
           kubectl get all
-          #kubectl apply -f k8s
-          #kubectl get all
+          kubectl apply -f k8s
+          kubectl get all
           
