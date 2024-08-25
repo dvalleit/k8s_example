@@ -1,4 +1,4 @@
-name: Kubernetes deployment
+ename: Kubernetes deployment
 
 on: 
   workflow_dispatch:
@@ -18,8 +18,18 @@ jobs:
         run: |
           gcloud auth configure-docker southamerica-west1-docker.pkg.dev
 
-      - run: |
+      - name: Docker build and push
+        run: |
           docker build -t southamerica-west1-docker.pkg.dev/blucore/bluecore-registry/flask-api-service:1.0.0 .
           docker push southamerica-west1-docker.pkg.dev/blucore/bluecore-registry/flask-api-service:1.0.0
 
-      
+      - name: Cluster 
+        run: |
+          gcloud container clusters get-credentials blucore-infra-task --region us-central1 --project blucore
+
+      - name: Deploy K8s
+        run: |
+          kubectl get all
+          kubectl apply -f k8s
+          kubectl get all
+          
