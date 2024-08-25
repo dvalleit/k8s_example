@@ -16,6 +16,11 @@ jobs:
         with:
           credentials_json: '${{ secrets.SA }}'
 
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v2'
+        with:
+          version: '>= 363.0.0'
+
       - name: docker login
         run: |
           gcloud auth configure-docker southamerica-west1-docker.pkg.dev
