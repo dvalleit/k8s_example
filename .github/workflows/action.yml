@@ -16,6 +16,6 @@ jobs:
 
       - run: |
           docker build -t southamerica-west1-docker.pkg.dev/blucore/bluecore-registry/flask-api-service:1.0.0 .
-          ocker push southamerica-west1-docker.pkg.dev/blucore/bluecore-registry/flask-api-service:1.0.0
+          docker push southamerica-west1-docker.pkg.dev/blucore/bluecore-registry/flask-api-service:1.0.0
 
       
