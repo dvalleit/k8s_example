@@ -10,7 +10,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.7
 
+      - uses: 'google-github-actions/auth@v2'
+        with:
+          credentials_json: '${{ secrets.SA }}'
+
       - run: |
-          ls -la
+          docker build -t southamerica-west1-docker.pkg.dev/blucore/bluecore-registry/flask-api-service:1.0.0 .
 
       
