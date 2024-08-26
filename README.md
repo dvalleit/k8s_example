@@ -103,4 +103,14 @@ spec:
 ```
 curl --resolve "flask-api-service.task:80:127.0.0.1" -i http://flask-api-service.task
 ```
+7. You should be able to see the following output:
+```
+HTTP/1.1 200 OK
+Date: Mon, 26 Aug 2024 02:07:27 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 33
+Connection: keep-alive
 
+Welcome to the Redis API Service!%      
+```
+8. Done! Now you can interact with the app
