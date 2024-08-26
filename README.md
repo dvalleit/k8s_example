@@ -54,6 +54,53 @@ eval $(minikube docker-env)
 
 
 ## Security considerations
-*
+* Safe and trusted container registry/hub
+* Minimal base image usage 
+* Use of env vars PYTHONUNBUFFERED and PYTHONDONTWRITEBYTECODE 
+* Non root user 
+* Image vulnerability scans with 3rd party tools
+* With an ingres controller it's possible to create a ingress and expose only a domain for the service itself
+* Limit resources
+* Limit capabilities
+* Image udpated if required
+* sign images
+* No new privileges
+* Readonly fs
+* Docker secrets
+* This app doesn't contain an ingress given it was not required but obviously for security res
 
+
+## More Security
+In order to secure this more you could set service type as NodePort and use an ingress
+To use you need to:
+1. Enable ingress on minikube
+```minikube addons enable ingress
+```
+2. Modify service type to NodePort and port to 8080
+3. Create ingress in k8s folder
+```
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: service-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: flask-api-service.task
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: flask-api-service
+                port:
+                  number: 8080
+```
+4. Execute again the deploy.sh script
+5. Kill **minikube tunnel** command with Ctrl+C and run it again
+6. Execute the following command in a new terminal:
+```
+curl --resolve "flask-api-service.task:80:127.0.0.1" -i http://flask-api-service.task
+```
 
