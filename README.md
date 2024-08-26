@@ -32,7 +32,8 @@ chmod +x deploy.sh
 ```
 
 Now in a different terminal window execute **minikube tunnel**
-==Done!==
+
+**Done!**
 
 The application should be runnind and available in localhost [127.0.0.1:80 ](http://127.0.0.1/)
 
